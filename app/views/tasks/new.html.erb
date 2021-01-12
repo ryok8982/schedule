@@ -1,0 +1,13 @@
+<h3>スケジュール新規作成</h3>
+<%= form_with url: "/tasks/create", local: true do |f| %>
+    <p>タイトル</p>
+    <p><%= f.text_field :title, class: "form-control" %></p>
+    <p>開始日</p>
+    <p><%= f.date_field :start, class: "form-control" %></p>
+    <p>終了日</p>
+    <p><%= f.date_field :finish, class: "form-control" %></p>
+    <p>終日</p>
+    <p><%= f.check_box :allday, {}, true, false %></p>
+   
+    <p><%= f.submit "create", class: "btn btn-outline-primary" %></p>
+<% end %>

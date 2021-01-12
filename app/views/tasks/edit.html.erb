@@ -1,0 +1,33 @@
+<h3>スケジュール編集</h3>
+<%= form_with url: "/tasks/update",method: :patch, local: true do |f| %>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row">タイトル</th>
+      <td><%= f.text_field :title, value: @task.title, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row">開始日</th>
+      <td><%= f.date_field :start, value: @task.start, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row">終了日</th>
+      <td><%= f.date_field :finish, value: @task.finish, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row">終日</th>
+       <% if @task.allday == false %>
+             <td><%= f.check_box :allday, {}, true, false %></td>
+            <% else %>
+                <td><%= f.check_box :allday, {:checked => "checked"}, true, false %></td>
+        <% end %>
+     
+    </tr>
+    <tr>
+      <th scope="row">スケジュールメモ</th>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<p><%= f.submit "create", class: "btn btn-outline-primary" %></p>
+<% end %>

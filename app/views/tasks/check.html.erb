@@ -1,0 +1,30 @@
+<h3>スケジュール詳細</h3>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row">タイトル</th>
+      <td><%= @task.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">開始日</th>
+      <td><%= @task.start %></td>
+    </tr>
+    <tr>
+      <th scope="row">終了日</th>
+      <td><%= @task.finish %></td>
+    </tr>
+    <tr>
+      <th scope="row">終日</th>
+       <% if @task.allday %>
+            <td>○</td>
+            <% else %>
+                <td>　</td>
+        <% end %>
+    </tr>
+    <tr>
+      <th scope="row">スケジュールメモ</th>
+      <td><%= @task.memo %></td>
+    </tr>
+  </tbody>
+</table>
+

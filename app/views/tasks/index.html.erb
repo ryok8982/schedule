@@ -1,0 +1,40 @@
+<h3>スケジュール一覧</h3>
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">タイトル</th>
+        <th scope="col">開始日</th>
+        <th scope="col">終了日</th>
+        <th scope="col">終日</th>
+        <th scope="col">スケジュール更新日時</th>
+        <th scope="col">確認</th>
+        <th scope="col">編集</th>
+        <th scope="col">削除</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @tasks.each do |task| %>
+  
+        
+        <tr>
+            <td><%= task.id %></td>
+            <td><%= task.title %></td>
+            <td><%= task.start %></td>
+            <td><%= task.finish %></td>
+            <% if task.allday %>
+                <td>○</td>
+                <% else %>
+                <td>　</td>
+            <% end %>
+            <td><%= task.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= link_to "確認", "/tasks/check/" + task.id.to_s %></td>
+            <td><%= link_to "編集", "tasks/edit/" + task.id.to_s %></td>
+            <td><%= link_to "削除", "/tasks/" + task.id.to_s + "/destroy/", method: :delete %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+    <%= link_to "新規作成", "tasks/new", class: "btn btn-primary", id: "create-new-task" %>
