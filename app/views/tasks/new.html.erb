@@ -1,13 +1,30 @@
 <h3>スケジュール新規作成</h3>
-<%= form_with url: "/tasks/create", local: true do |f| %>
-    <p>タイトル</p>
-    <p><%= f.text_field :title, class: "form-control" %></p>
-    <p>開始日</p>
-    <p><%= f.date_field :start, class: "form-control" %></p>
-    <p>終了日</p>
-    <p><%= f.date_field :finish, class: "form-control" %></p>
-    <p>終日</p>
-    <p><%= f.check_box :allday, {}, true, false %></p>
-   
-    <p><%= f.submit "create", class: "btn btn-outline-primary" %></p>
+<%= render "shared/error", obj: @task %>
+<%= form_for @task do |f| %>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row">タイトル</th>
+      <td><%= f.text_field :title, value: @task.title, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row">開始日</th>
+      <td><%= f.date_field :start, value: @task.start, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row">終了日</th>
+      <td><%= f.date_field :finish, value: @task.finish, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row">終日</th>
+      <td><%= f.check_box :allday, {}, true, false %></td>
+    </tr>
+    <tr>
+      <th scope="row">スケジュールメモ</th>
+      <td><%= f.text_field :memo, value: @task.memo, class: "form-control" %></td>
+    </tr>
+  </tbody>
+</table>
+<p><%= f.submit "create", class: "btn btn-outline-primary" %></p>
+
 <% end %>

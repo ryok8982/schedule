@@ -1,5 +1,6 @@
 <h3>スケジュール編集</h3>
-<%= form_with url: "/tasks/update",method: :patch, local: true do |f| %>
+<%= render "shared/error", obj: @task %>
+<%= form_for @task do |f| %>
 <table class="table table-bordered">
   <tbody>
     <tr>
@@ -16,18 +17,17 @@
     </tr>
     <tr>
       <th scope="row">終日</th>
-       <% if @task.allday == false %>
-             <td><%= f.check_box :allday, {}, true, false %></td>
+      <% if @task.allday %>
+            <td><%= f.check_box :allday, {checked:true}, true, false %></td>
             <% else %>
-                <td><%= f.check_box :allday, {:checked => "checked"}, true, false %></td>
+                <td><%= f.check_box :allday, {}, true, false %></td>
         <% end %>
-     
     </tr>
     <tr>
-      <th scope="row">スケジュールメモ</th>
-      <td></td>
+       <th scope="row">スケジュールメモ</th>
+      <td><%= f.text_field :memo, value: @task.memo, class: "form-control" %></td>
     </tr>
   </tbody>
 </table>
-<p><%= f.submit "create", class: "btn btn-outline-primary" %></p>
+<p><%= f.submit "update", class: "btn btn-outline-primary" %></p>
 <% end %>
