@@ -16,7 +16,7 @@
     </tr>
     </thead>
     <tbody>
-    <% @tasks.each do |task| %>
+    <% @task.each do |task| %>
   
         
         <tr>
@@ -31,8 +31,8 @@
             <% end %>
             <td><%= task.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= link_to "確認", "/tasks/check/" + task.id.to_s %></td>
-            <td><%= link_to "編集", "tasks/edit/" + task.id.to_s %></td>
-            <td><%= link_to "削除", "/tasks/" + task.id.to_s + "/destroy/", method: :delete %></td>
+            <td><%= link_to "編集", "tasks/"+ task.id.to_s + "/edit/"  %></td>
+            <td><%= link_to "削除", "/tasks/" + task.id.to_s , method: :delete %></td>
         </tr>
     <% end %>
     </tbody>

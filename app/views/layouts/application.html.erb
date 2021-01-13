@@ -10,9 +10,20 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="/tasks">Ruby on Rails スケジュール管理アプリ</a>
-    </nav>
+    <header>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="/tasks">Ruby on Rails スケジュール管理アプリ</a>
+      </nav>
+    </header>
+    <main>
     <%= yield %>
+    </main>
+    <footer>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <% require "date" %>
+        <% day = Date.today %>
+        <a class="navbar-brand" href="/tasks">現在の日時:<%= day.strftime("%Y年%m月%d日") %></a>
+      </nav>
+    </footer>
   </body>
 </html>
